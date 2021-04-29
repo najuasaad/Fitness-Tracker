@@ -21,3 +21,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
+
+// needs port listener 
+// do we not need any password for anything?
