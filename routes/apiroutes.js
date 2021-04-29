@@ -1,16 +1,26 @@
 // require in router and model
 const router = require('express').Router();
-const Workout = require('../models/workout.js');
+const db = require("../models")
 
-// create new workout
+// addExercise
+app.put("/api/workouts/:id", ({body}, res) => {
 
-// update workout (continue)
+})
 
-// (re)view workout
+// getLastWorkout
+app.get("/api/workouts", (req, res) => {
 
-// view total weight?
+})
 
-// delete workout
+// createWorkout
+app.post("/api/workouts", (req, res) => {
+
+})
+
+// getWorkoutsInRange
+app.get("/api/workouts/range", (req, res) => {
+
+})
 
 // export router
 module.exports = router;
