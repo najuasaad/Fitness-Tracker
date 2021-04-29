@@ -2,37 +2,15 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-// created based on seed file
 const WorkoutSchema = new Schema({
   day: {
     type: Date,
     default: Date.now,
   },
   exercises: [
-    {
-      type: {
-        type: String,
-      },
-      name: {
-        type: String,
-      },
-      duration: {
-        type: Number,
-      },
-      weight: {
-        type: Number,
-      },
-      reps: {
-        type: Number,
-      },
-      sets: {
-        type: Number,
-      },
-      distance: {
-        type: Number,
-      },
-    },
-  ],
+    {type: Schema.Types.ObjectId,
+    ref: 'exercises'}
+  ]
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);
