@@ -19,6 +19,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+app.use(require("./routes/HTMLroutes"))
 app.use(require("./routes/apiroutes"))
 
 db.on("error", error => {
