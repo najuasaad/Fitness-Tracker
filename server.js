@@ -3,7 +3,7 @@ const mongojs = require("mongojs");
 const logger = require("morgan");
 
 const databaseUrl = "fitness";
-const collections = ["daily-workouts"];
+const collections = ["exercises"];
 const db = mongojs(databaseUrl, collections);
 
 const app = express();
