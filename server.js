@@ -19,6 +19,8 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+app.use(require("./routes/apiroutes"))
+
 db.on("error", error => {
   console.log("Database Error:", error);
 });
@@ -31,6 +33,7 @@ const config = {
 }
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness", config);
+
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
