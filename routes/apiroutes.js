@@ -3,16 +3,17 @@ const router = require('express').Router();
 const db = require("../models")
 
 // addExercise
-router.put("/api/workouts/:id", ({body}, res) => {
-  db.Exercise.create(body)
-    .then(({_id}) => db.Workout.findOneAndUpdate({ day: Date.now }, { $push: { exercises: _id } } , { new: true}))
-    .then(result => {
-      res.json(result);
-    })
-    .catch(err => {
-      res.json(err)
-    })
+router.put("/api/workouts/:id", (req, res) => {
+  id = req.params.id
+  db.Workout.findOneAndUpdate({ "_id": id}, { $push: { exercises: req.body } } , { new: true})
+  .then(result => {
+    res.json(result);
+  })
+  .catch(err => {
+    res.json(err)
+  })
 })
+
 
 // getLastWorkout
 router.get("/api/workouts", (req, res) => {
@@ -38,17 +39,17 @@ router.post("/api/workouts", ({body}, res) => {
   })
 })
 
+
 // getWorkoutsInRange
-/* router.get("/api/workouts/range", (req, res) => {
+router.get("/api/workouts/range", (req, res) => {
   db.Workout.find({})
-  .populate("Exercise")
   .then(dbWorkout => {
     res.json(dbWorkout)
   })
   .catch(err => {
     res.json(err)
   })
-}) */
+})
 
 // export router
 module.exports = router;
