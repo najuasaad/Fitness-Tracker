@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 // sets up database and calls collections
 const databaseUrl = "fitness";
-const collections = ["Exercise", "Workout"];
+const collections = ["Workout"];
 const db = mongojs(databaseUrl, collections);
 
 const app = express();
