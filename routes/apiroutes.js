@@ -18,9 +18,15 @@ router.put("/api/workouts/:id", (req, res) => {
 // getLastWorkout
 router.get("/api/workouts", (req, res) => {
   db.Workout.find({})
-  .populate("Exercise")
-  .then(dbWorkout => {
-    //console.log(dbWorkout)
+  // creates new field with total time calculated
+  db.Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: {$sum: "$exercises.duration"},
+      }
+    }
+  ])
+  .then(dbWorkout => { 
     res.json(dbWorkout)
   })
   .catch(err => {
@@ -40,7 +46,8 @@ router.post("/api/workouts", ({body}, res) => {
 })
 
 
-// getWorkoutsInRange
+//getWorkoutsInRange
+// this is the stats page
 router.get("/api/workouts/range", (req, res) => {
   db.Workout.find({})
   .then(dbWorkout => {

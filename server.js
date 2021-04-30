@@ -22,7 +22,7 @@ app.use(express.static("public"));
 app.use(require("./routes/HTMLroutes"))
 app.use(require("./routes/apiroutes"))
 
-//app.use('/api', apiRoutes)
+
 
 db.on("error", error => {
   console.log("Database Error:", error);
